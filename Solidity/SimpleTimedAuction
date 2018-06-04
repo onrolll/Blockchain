@@ -1,0 +1,20 @@
+pragma solidity ^0.4.18;
+
+contract SimpleTimedAuction{
+    mapping(address=>uint256) public tokenBalances;
+    address private owner;
+    uint private duration = 1 minutes;
+    uint private start;
+    
+    function SimpleTimedAuction(uint256 _initialSupply) public{
+        owner = msg.sender;
+        start = now;
+        tokenBalances[owner] = _initialSupply; 
+    }
+    function buyTokens(uint256 amount) public{
+        assert(now<=start + duration);
+        assert(amount<=tokenBalances[owner]);
+        tokenBalances[owner]-=amount;
+        tokenBalances[msg.sender]+=amount;
+    }
+}
