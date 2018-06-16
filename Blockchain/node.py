@@ -225,6 +225,19 @@ def difficulty():
     dif = _node.calculate_cumulative_difficulty(node.blockchain)
     return jsonify(dif)
 
+@app.route('/balance/<string:address>', methods = ['GET'])
+def balance(address):
+    print("ADDRESSS IN balance -------------")
+    print(address)
+    #trimmed_address = address[2: len(address) - 2]
+    print(address[2: len(address) - 2])
+    balance = node.address_balance[address]
+    print(balance)
+    print("ADDRESSS IN balance -------------")
+
+
+
+    return jsonify(balance)
 
 def verify_transaction(pub_key,transaction_sha256hex,signature):
     #if len(self.sender_signature)>0:

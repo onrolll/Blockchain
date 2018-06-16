@@ -77,6 +77,11 @@ class Wallet(object):
                                     }
 
 
+    def balance(self, address):
+        get = r.get('%sbalance/%s'%(self.node_url, address))
+        print(address)
+        print("Balance of %s is %s"%(address,get.json()))
+
 
     def send(self, fromA, val, to):
         print(fromA)

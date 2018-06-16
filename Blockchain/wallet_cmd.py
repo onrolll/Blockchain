@@ -23,7 +23,10 @@ class Wallet_CMD(cmd.Cmd):
 
         self.wallet.existing_private_key_to_address(args)
         #
-
+    def do_balance(self, args):
+        address = args.split(' ')
+        print(address[0])
+        self.wallet.balance(address[0])
 
     def do_addresses(self,wallet):
         pprint(self.wallet.addresses)
