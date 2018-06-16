@@ -205,7 +205,7 @@ def candidate_block():
         """
 
 
-        node.address_balance[trans['to_address']] = node.address_balance.get(trans['to_address'],0) + trans['transaction_value']
+        node.address_balance[trans['to_address']] = node.address_balance.get(trans['to_address'],0) + int(trans['transaction_value'])
 
     print("Node address_balance before node.block_transactions.clear()",node.address_balance)
 

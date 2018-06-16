@@ -23,3 +23,7 @@ def timestamp():
 def nakov_sha256(msg: str) -> int:
     hash_bytes = hashlib.sha256(msg.encode("utf8")).digest()
     return int.from_bytes(hash_bytes, byteorder="big")
+
+def ripemd160(public_key_compressed):
+        hash_bytes = hashlib.new('ripemd160', public_key_compressed.encode("utf8")).digest()
+        return hash_bytes.hex()
